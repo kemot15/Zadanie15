@@ -79,4 +79,8 @@ public class Vehicle {
                 ", vin='" + vin + '\'' +
                 "}";
     }
+
+    public String csvFormat (){
+        return typ+";"+brand+";"+model+";"+year+";"+mileage+";"+vin+"\n";
+    }
 }
