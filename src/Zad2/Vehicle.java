@@ -69,32 +69,6 @@ public class Vehicle {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Vehicle)) return false;
-
-        Vehicle vehicle = (Vehicle) o;
-
-        if (year != vehicle.year) return false;
-        if (mileage != vehicle.mileage) return false;
-        if (!typ.equals(vehicle.typ)) return false;
-        if (!brand.equals(vehicle.brand)) return false;
-        if (!model.equals(vehicle.model)) return false;
-        return vin.equals(vehicle.vin);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = typ.hashCode();
-        result = 31 * result + brand.hashCode();
-        result = 31 * result + model.hashCode();
-        result = 31 * result + year;
-        result = 31 * result + mileage;
-        result = 31 * result + vin.hashCode();
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "Vehicle{" +
                 "typ='" + typ + '\'' +
@@ -103,6 +77,6 @@ public class Vehicle {
                 ", year=" + year +
                 ", mileage=" + mileage +
                 ", vin='" + vin + '\'' +
-                '}';
+                "}";
     }
 }
