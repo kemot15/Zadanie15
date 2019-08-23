@@ -10,7 +10,6 @@ public class Main {
         try {
             String path = "country.csv";
             Map<String, Country> countryMap = getCountryMap(path);
-            //System.out.println(countryMap);
             System.out.println(getStatistic(countryMap));
         } catch (IOException e) {
             System.out.println("Sprawdz czy z plikiem wszystko OK");
@@ -28,6 +27,7 @@ public class Main {
              country = new Country(split[0], split[1], Integer.valueOf(split[2]));
             countryMap.put(country.getId(),country);
         }
+        br.close();
         return countryMap;
     }
 
@@ -35,6 +35,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj kod kraju, ktory chcesz wyswietlic");
         String id = scanner.nextLine().toUpperCase();
+        scanner.close();
         if (countryMap.containsKey(id))
             return countryMap.get(id).toString();
         else
