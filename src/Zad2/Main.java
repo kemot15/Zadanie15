@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         String path = "cars.txt";
         try {
@@ -40,7 +40,7 @@ public class Main {
 
     private static void showNextVehicle(Queue<Vehicle> vehicles) {
         Vehicle vehicle = vehicles.poll();
-        if (vehicle !=null)
+        if (vehicle != null)
         System.out.println("Przyjecie pojazdu\n" + vehicle.toString() + "\n");
         else
             System.out.println("Nie ma wiecej pojazdow");
@@ -63,7 +63,6 @@ public class Main {
         return vehicle;
     }
     private static int showMenu(){
-        scanner = new Scanner(System.in);
         System.out.println("Co chcesz zrobic?" +
                 "\n0 - zakoncz program" +
                 "\n1 - wczytaj dane nowego pojazdu" +
@@ -83,13 +82,13 @@ public class Main {
     private static Queue<Vehicle> getVehicles (String path) throws IOException {
         Queue<Vehicle> vehicles = new LinkedList<>();
         File file = new File(path);
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNextLine()){
-            String[] split = scanner.nextLine().split(";");
+        Scanner fileScanner = new Scanner(file);
+        while (fileScanner.hasNextLine()){
+            String[] split = fileScanner.nextLine().split(";");
             Vehicle vehicle = new Vehicle(split[0], split[1], split[2], Integer.valueOf(split[3]), Integer.valueOf(split[4]), split[5]);
             vehicles.offer(vehicle);
         }
-        scanner.close();
+        fileScanner.close();
         return vehicles;
     }
 }
