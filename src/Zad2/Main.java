@@ -83,12 +83,13 @@ public class Main {
     private static Queue<Vehicle> getVehicles (String path) throws IOException {
         Queue<Vehicle> vehicles = new LinkedList<>();
         File file = new File(path);
-        scanner = new Scanner(file);
+        Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()){
             String[] split = scanner.nextLine().split(";");
             Vehicle vehicle = new Vehicle(split[0], split[1], split[2], Integer.valueOf(split[3]), Integer.valueOf(split[4]), split[5]);
             vehicles.offer(vehicle);
         }
+        scanner.close();
         return vehicles;
     }
 }
